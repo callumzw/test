@@ -1,1 +1,1 @@
-Read
+- Master Build Status [![Build Status](https://travis-ci.com/callumzw/test.svg?branch=main)](https://travis-ci.com/callumzw/test)
