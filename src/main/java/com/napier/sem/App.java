@@ -12,7 +12,11 @@ public class App
         // Connect to database
         a.connect();
         System.out.println("Getting Employee...");
-
+        // Get Employee
+        Employee emp = a.getEmployee(255530);
+        // Display results
+        a.displayEmployee(emp);
+        System.out.println("Got...Ummm....");
         System.out.println("Disconnecting...");
         // Disconnect from database
         a.disconnect();
@@ -46,7 +50,7 @@ public class App
             try
             {
                 // Wait a bit for db to start
-                System.out.println("Waiting for DB...");
+
                 Thread.sleep(30000);
                 // Connect to database
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/employees?useSSL=false", "root", "example");
