@@ -2,6 +2,7 @@ package com.napier.sem;
 
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class Capital {
     /**
@@ -312,14 +313,15 @@ public class Capital {
         }
     }
 
-    public static void displayCapital(Capital capital)
+    public static void displayCapital(ArrayList<Capital> capitals)
     {
-        if (capital != null)
+        System.out.println(String.format("%-14s %-17s %-14s", "Name", "Country", "Population"));
+        for (Capital capital : capitals)
         {
-            System.out.println(
-                    capital.name + "\n"
-                            + capital.country + "\n"
-                            + capital.population + "\n");
+            String capital_str =
+                    String.format("%-14s %-17s %-14s",
+                            capital.name, capital.country, capital.population);
+            System.out.println(capital_str);
         }
     }
 }
