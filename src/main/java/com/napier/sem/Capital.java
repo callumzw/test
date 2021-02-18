@@ -25,7 +25,7 @@ public class Capital {
      */
 
     // All Capitals by Population in the World
-    public static Capital capitalsWorld()
+    public static ArrayList<Capital> capitalsWorld()
     {
         try
         {
@@ -33,35 +33,24 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country)"
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID "
+                            + "ORDER BY Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
@@ -72,7 +61,7 @@ public class Capital {
     }
 
     // All Capitals by Population in x Continent
-    public static Capital capitalsCont(String continent)
+    public static ArrayList<Capital> capitalsCont(String continent)
     {
         try
         {
@@ -80,36 +69,24 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country) "
-                            + "AND Continent = '" + continent + "'"
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID AND country.Continent = '" +continent+ "' "
+                            + "ORDER BY Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
@@ -120,7 +97,7 @@ public class Capital {
     }
 
     // All Capitals by Population in x Region
-    public static Capital capitalsRegion(String region)
+    public static ArrayList<Capital> capitalsRegion(String region)
     {
         try
         {
@@ -128,36 +105,24 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country) "
-                            + "AND Region = '" + region + "'"
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID AND country.Region = '" +region+ "' "
+                            + "ORDER BY Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
@@ -168,7 +133,7 @@ public class Capital {
     }
 
     // Top x Capitals by Population in the World
-    public static Capital topCapitalWorld(int x)
+    public static ArrayList<Capital> topCapitalWorld(int x)
     {
         try
         {
@@ -176,47 +141,35 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country) "
-                            + "ORDER BY Population DESC"
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID "
+                            + "ORDER BY Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
-            System.out.println("Failed to get city details");
+            System.out.println("Failed to get capital details");
             return null;
         }
     }
 
     // Top x Capitals by Population in x Continent
-    public static Capital topCapitalCont(int x,String continent)
+    public static ArrayList<Capital> topCapitalCont(int x,String continent)
     {
         try
         {
@@ -224,37 +177,24 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country) "
-                            + "AND Continent = '" + continent + "'"
-                            + "ORDER BY Population DESC"
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID AND country.Continent= '" +continent+ "' "
+                            + "ORDER BY Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
@@ -265,7 +205,7 @@ public class Capital {
     }
 
     // Top x Capitals by Population in x Region
-    public static Capital topCapitalRegion(int x,String region)
+    public static ArrayList<Capital> topCapitalRegion(int x,String region)
     {
         try
         {
@@ -273,37 +213,24 @@ public class Capital {
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String capitalSelect =
-                    "SELECT Name, CountryCode, Population "
-                            + "FROM city "
-                            + "WHERE EXISTS(SELECT Capital FROM country) "
-                            + "AND Region = '" + region + "'"
-                            + "ORDER BY Population DESC"
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Capital=city.ID AND country.Region= '" +region+ "' "
+                            + "ORDER BY Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(capitalSelect);
             // Return new employee if valid.
+            ArrayList<Capital> capitals = new ArrayList<Capital>();
             // Check one is returned
-            if (rset.next())
+            while (rset.next())
             {
                 Capital capital = new Capital();
-                capital.name = rset.getString("Name");;
-                capital.population = rset.getInt("Population");
-                // Get Country Name
-                String cnt = rset.getString("CountryCode");
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + cnt;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next())
-                {
-                    capital.country = cntrset.getString("Name");
-                }
-                return capital;
+                capital.name = rset.getString("city.Name");
+                capital.country = rset.getString("country.Name");
+                capital.population = rset.getInt("city.Population");
+                capitals.add(capital);
             }
-            else
-                return null;
+            return capitals;
         }
         catch (Exception e)
         {
@@ -315,11 +242,11 @@ public class Capital {
 
     public static void displayCapital(ArrayList<Capital> capitals)
     {
-        System.out.println(String.format("%-14s %-17s %-14s", "Name", "Country", "Population"));
+        System.out.println(String.format("%-20s %-17s %-14s", "Name", "Country", "Population"));
         for (Capital capital : capitals)
         {
             String capital_str =
-                    String.format("%-14s %-17s %-14s",
+                    String.format("%-20s %-17s %-14s",
                             capital.name, capital.country, capital.population);
             System.out.println(capital_str);
         }

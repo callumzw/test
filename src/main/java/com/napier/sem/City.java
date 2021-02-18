@@ -40,41 +40,22 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -95,42 +76,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Continent = '" + continent + "'"
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE Continent = '" +continent+ "' "
+                            + "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -151,42 +113,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Region = '" + region + "' "
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE Region = '" +region+ "' "
+                            + "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -207,42 +150,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Country = '" + country + "' "
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Name = '" +country+ "' "
+                            + "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -263,42 +187,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE District = '" + district + "' "
-                            + "ORDER BY Population DESC";
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE District = '" +district+ "' "
+                            + "ORDER BY city.Population DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -319,42 +224,22 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "ORDER BY city.Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -375,43 +260,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Continent = '" + continent + "' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE Continent = '" +continent+ "' "
+                            + "ORDER BY city.Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -432,43 +297,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Region = '" + region + "' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE Region = '" +region+ "' "
+                            + "ORDER BY city.Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -489,43 +334,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE Country = '" + country + "' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE country.Name = '" +country+ "' "
+                            + "ORDER BY city.Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -546,43 +371,23 @@ public class City
             Statement stmt = Database.getCon().createStatement();
             // Create string for SQL statement
             String citySelect =
-                    "SELECT Name, CountryCode, District, Population "
-                            + "FROM city "
-                            + "WHERE District = '" + district + "' "
-                            + "ORDER BY Population DESC "
-                            + "LIMIT " + x;
+                    "SELECT city.Name, country.Name, city.District, city.Population "
+                            + "FROM city JOIN country ON city.CountryCode=country.Code "
+                            + "WHERE District = '" +district+ "' "
+                            + "ORDER BY city.Population DESC LIMIT " + x;
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            ArrayList<String> codes = new ArrayList<String>();
             String code;
             // Check one is returned
-            if (rset.next())
-            {
+            while (rset.next()) {
                 City city = new City();
-                city.name = rset.getString("Name");;
+                city.name = rset.getString("city.Name");
+                city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("Population");
-                // Get Country Name
-                code = rset.getString("CountryCode");
+                city.population = rset.getInt("city.Population");
                 cities.add(city);
-                codes.add(code);
-            }
-            int i = 0;
-            for (String countries : codes)
-            {
-                code = codes.get(i);
-                // Use Country Code on country database
-                String countrySelect =
-                        "SELECT Name "
-                                + "FROM country "
-                                + "WHERE Code = " + code;
-                ResultSet cntrset = stmt.executeQuery(countrySelect);
-                if (cntrset.next()) {
-                    cities.get(i).country = cntrset.getString("Name");
-                }
-                i++;
             }
             return cities;
         }
@@ -596,11 +401,11 @@ public class City
 
     public static void displayCity(ArrayList<City> cities)
     {
-        System.out.println(String.format("%-14s %-17s %-16s %-14s ", "Name", "Country", "District", "Population"));
+        System.out.println(String.format("%-20s %-17s %-16s %-14s", "Name", "Country", "District", "Population"));
         for (City city : cities)
         {
             String city_str =
-                    String.format("%-8s %-14s %-17s %-16s %-14s %-10s",
+                    String.format("%-20s %-17s %-16s %-14s",
                              city.name, city.country, city.district, city.population);
             System.out.println(city_str);
 
