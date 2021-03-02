@@ -31,7 +31,7 @@ public class Country
     /**
      * Country Population
      */
-    public int population;
+    public long population;
 
     /**
      * Country Capital
@@ -68,7 +68,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -107,7 +107,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -146,7 +146,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -186,7 +186,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -225,7 +225,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -264,7 +264,7 @@ public class Country
                 country.name = rset.getString("country.Name");
                 country.continent = rset.getString("Continent");
                 country.region = rset.getString("Region");
-                country.population = rset.getInt("country.Population");
+                country.population = rset.getLong("country.Population");
                 country.capital = rset.getString("city.Name");
                 countries.add(country);
             }
@@ -290,6 +290,7 @@ public class Country
             System.out.println(country_str);
 
         }
+        System.out.println("\n");
     }
 
 }

@@ -14,17 +14,17 @@ public class Population
     /**
      * Total population
      */
-    public int totalPop;
+    public long totalPop;
 
     /**
      * City Population
      */
-    public int cityPop;
+    public long cityPop;
 
     /**
      * Rural Population
      */
-    public int ruralPop;
+    public long ruralPop;
 
     // Methods
     public static ArrayList<Population> popContinent()
@@ -47,9 +47,9 @@ public class Population
             {
                 Population population = new Population();
                 population.name = rset.getString("Continent");
-                population.totalPop = rset.getInt("SUM(DISTINCT country.Population)");
-                population.cityPop = rset.getInt ("SUM(city.Population)");
-                population.ruralPop = rset.getInt ("SUM(DISTINCT country.Population)-SUM(city.Population)");
+                population.totalPop = rset.getLong("SUM(DISTINCT country.Population)");
+                population.cityPop = rset.getLong ("SUM(city.Population)");
+                population.ruralPop = rset.getLong ("SUM(DISTINCT country.Population)-SUM(city.Population)");
                 populations.add(population);
             }
             return populations;
@@ -82,9 +82,9 @@ public class Population
             {
                 Population population = new Population();
                 population.name = rset.getString("Region");
-                population.totalPop = rset.getInt("SUM(DISTINCT country.Population)");
-                population.cityPop = rset.getInt ("SUM(city.Population)");
-                population.ruralPop = rset.getInt ("SUM(DISTINCT country.Population)-SUM(city.Population)");
+                population.totalPop = rset.getLong("SUM(DISTINCT country.Population)");
+                population.cityPop = rset.getLong("SUM(city.Population)");
+                population.ruralPop = rset.getLong("SUM(DISTINCT country.Population)-SUM(city.Population)");
                 populations.add(population);
             }
             return populations;
@@ -117,9 +117,9 @@ public class Population
             {
                 Population population = new Population();
                 population.name = rset.getString("Continent");
-                population.totalPop = rset.getInt("SUM(DISTINCT country.Population)");
-                population.cityPop = rset.getInt ("SUM(city.Population)");
-                population.ruralPop = rset.getInt ("SUM(DISTINCT country.Population)-SUM(city.Population)");
+                population.totalPop = rset.getLong("SUM(DISTINCT country.Population)");
+                population.cityPop = rset.getLong("SUM(city.Population)");
+                population.ruralPop = rset.getLong("SUM(DISTINCT country.Population)-SUM(city.Population)");
                 populations.add(population);
             }
             return populations;
@@ -130,5 +130,18 @@ public class Population
             System.out.println("Failed to get population details");
             return null;
         }
+    }
+
+    public static void displayPopulation(ArrayList<Population> populations)
+    {
+        System.out.println(String.format("%-17s %-14s %-14s %-14s", "Name", "Total", "City", "Rural"));
+        for (Population pop : populations)
+        {
+            String pop_str =
+                    String.format("%-17s %-14s %-14s %-14s",
+                            pop.name, pop.totalPop, pop.cityPop, pop.ruralPop);
+            System.out.println(pop_str);
+        }
+        System.out.println("\n");
     }
 }

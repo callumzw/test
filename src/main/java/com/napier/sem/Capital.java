@@ -18,7 +18,7 @@ public class Capital {
     /**
      * City population
      */
-    public int population;
+    public long population;
 
     /**
      * Methods
@@ -47,7 +47,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -83,7 +83,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -119,7 +119,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -155,7 +155,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -191,7 +191,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -227,7 +227,7 @@ public class Capital {
                 Capital capital = new Capital();
                 capital.name = rset.getString("city.Name");
                 capital.country = rset.getString("country.Name");
-                capital.population = rset.getInt("city.Population");
+                capital.population = rset.getLong("city.Population");
                 capitals.add(capital);
             }
             return capitals;
@@ -242,13 +242,14 @@ public class Capital {
 
     public static void displayCapital(ArrayList<Capital> capitals)
     {
-        System.out.println(String.format("%-20s %-17s %-14s", "Name", "Country", "Population"));
+        System.out.println(String.format("%-17s %-17s %-14s", "Name", "Country", "Population"));
         for (Capital capital : capitals)
         {
             String capital_str =
-                    String.format("%-20s %-17s %-14s",
+                    String.format("%-17s %-17s %-14s",
                             capital.name, capital.country, capital.population);
             System.out.println(capital_str);
         }
+        System.out.println("\n");
     }
 }

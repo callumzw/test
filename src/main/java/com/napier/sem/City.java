@@ -25,7 +25,7 @@ public class City
     /**
      * City population
      */
-    public int population;
+    public long population;
 
     /**
      *  Methods
@@ -54,7 +54,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -91,7 +91,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -128,7 +128,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -165,7 +165,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -202,7 +202,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -238,7 +238,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -275,7 +275,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -312,7 +312,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -349,7 +349,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -386,7 +386,7 @@ public class City
                 city.name = rset.getString("city.Name");
                 city.country =rset.getString("country.Name");
                 city.district = rset.getString("District");
-                city.population = rset.getInt("city.Population");
+                city.population = rset.getLong("city.Population");
                 cities.add(city);
             }
             return cities;
@@ -401,14 +401,15 @@ public class City
 
     public static void displayCity(ArrayList<City> cities)
     {
-        System.out.println(String.format("%-20s %-17s %-16s %-14s", "Name", "Country", "District", "Population"));
+        System.out.println(String.format("%-17s %-17s %-16s %-14s", "Name", "Country", "District", "Population"));
         for (City city : cities)
         {
             String city_str =
-                    String.format("%-20s %-17s %-16s %-14s",
+                    String.format("%-17s %-17s %-16s %-14s",
                              city.name, city.country, city.district, city.population);
             System.out.println(city_str);
 
         }
+        System.out.println("\n");
     }
 }
