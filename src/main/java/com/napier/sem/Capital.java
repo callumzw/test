@@ -242,11 +242,11 @@ public class Capital {
 
     public static void displayCapital(ArrayList<Capital> capitals)
     {
-        System.out.println(String.format("%-17s %-17s %-14s", "Name", "Country", "Population"));
+        System.out.println(String.format("%-18s %-17s %-14s", "Name", "Country", "Population"));
         for (Capital capital : capitals)
         {
             String capital_str =
-                    String.format("%-17s %-17s %-14s",
+                    String.format("%-18s %-17s %-14s",
                             capital.name, capital.country, capital.population);
             System.out.println(capital_str);
         }
