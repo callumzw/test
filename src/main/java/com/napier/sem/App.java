@@ -3,7 +3,7 @@ package com.napier.sem;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
-// This prints reports of Countries, Cities, Capitals and Populations.
+// This prints reports of Countries, Cities, Capitals and Populations..
 public class App {
     public static void main(String[] args) {
 
