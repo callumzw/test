@@ -134,11 +134,11 @@ public class Population
 
     public static void displayPopulation(ArrayList<Population> populations)
     {
-        System.out.println(String.format("%-17s %-14s %-14s %-14s", "Name", "Total", "City", "Rural"));
+        System.out.println(String.format("%-18s %-14s %-14s %-14s", "Name", "Total", "City", "Rural"));
         for (Population pop : populations)
         {
             String pop_str =
-                    String.format("%-17s %-14s %-14s %-14s",
+                    String.format("%-18s %-14s %-14s %-14s",
                             pop.name, pop.totalPop, pop.cityPop, pop.ruralPop);
             System.out.println(pop_str);
         }
