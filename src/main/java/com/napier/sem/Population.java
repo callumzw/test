@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Population
 {
     /**
-     * Name of area
+     * Name of area.
      */
     public String name;
 
