@@ -47,7 +47,6 @@ public class City
             ResultSet rset = stmt.executeQuery(citySelect);
             // Return new employee if valid.
             ArrayList<City> cities = new ArrayList<City>();
-            String code;
             // Check one is returned
             while (rset.next()) {
                 City city = new City();
