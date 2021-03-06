@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        // Connect to database..
+        // Connect to database.
        Database.connect();
 
        Scanner input = new Scanner(System.in);
