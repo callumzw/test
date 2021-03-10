@@ -31,7 +31,7 @@ public class Database {
             System.out.println("Connecting to database...");
             try {
                 // Wait a bit for db to start
-                Thread.sleep(5000);
+                Thread.sleep(10000);
                 // Connect to test database, NEED: Update to world database+
                 con = DriverManager.getConnection("jdbc:mysql://db:3306/world?useSSL=false", "root", "example");
                 System.out.println("Successfully connected");
