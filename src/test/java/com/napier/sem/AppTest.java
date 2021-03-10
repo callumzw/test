@@ -19,8 +19,35 @@ public class AppTest
     }
 
     @Test
-    void printSalariesTestNull()
+    void printCountriesTestNull()
     {
         country.displayCountry(null);
+    }
+    @Test
+    void printCountriesTestEmpty()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country.displayCountry(countries);
+    }
+    @Test
+    void printCountriesTestContainsNull()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        countries.add(null);
+        Country.displayCountry(countries);
+    }
+    @Test
+    void printCountries()
+    {
+        ArrayList<Country> countries = new ArrayList<Country>();
+        Country country = new Country();
+        country.code = "JPN";
+        country.name = "Japan";
+        country.continent = "Asia";
+        country.region = "East Asia";
+        country.population = 100000;
+        country.capital = "Tokyo";
+        countries.add(country);
+        Country.displayCountry(countries);
     }
 }

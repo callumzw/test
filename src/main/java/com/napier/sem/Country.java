@@ -281,9 +281,18 @@ public class Country
     // Display country to console
     public static void displayCountry(ArrayList<Country> countries)
     {
+        // Check employees is not null
+        if (countries == null)
+        {
+            System.out.println("No countries");
+            return;
+        }
         System.out.println(String.format("%-8s %-14s %-17s %-16s %-14s %-10s", "Code", "Name", "Continent", "Region", "Population", "Capital"));
+        // Loop over all employees in the list
         for (Country country : countries)
         {
+                if (country == null)
+                    continue;
             String country_str =
                     String.format("%-8s %-14s %-17s %-16s %-14s %-10s",
                         country.code, country.name, country.continent, country.region, country.population, country.capital);
