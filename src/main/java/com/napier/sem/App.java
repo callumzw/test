@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
 
         // Connect to database...
-       Database.connect();
+       Database.connect("localhost:33060");
 
        Scanner input = new Scanner(System.in);
       // System.out.println("Top x countries in y Continent");
