@@ -10,13 +10,6 @@ public class App {
         // Connect to database...
        Database.connect("localhost:33060");
 
-       Scanner input = new Scanner(System.in);
-      // System.out.println("Top x countries in y Continent");
-      // System.out.println("Enter x number of countries");
-       //int x = Integer.parseInt(input.nextLine());
-      // System.out.println("Enter x Continent");
-       //String y = input.nextLine();
-
        ArrayList<Country> countries = Country.topCountryCont(5,"Africa");
        Country.displayCountry(countries);
 
