@@ -7,8 +7,15 @@ import java.util.Scanner;
 public class App {
     public static void main(String[] args) {
 
-        // Connect to database...
-       Database.connect("localhost:33060");
+        if (args.length < 1)
+        {
+            // Connect to database...
+            Database.connect("localhost:33060");
+        }
+        else
+        {
+            Database.connect(args[0]);
+        }
 
        ArrayList<Country> countries = Country.topCountryCont(5,"Africa");
        Country.displayCountry(countries);
