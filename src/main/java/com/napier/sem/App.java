@@ -1,5 +1,5 @@
 package com.napier.sem;
-
+// used to do stuff
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Scanner;
