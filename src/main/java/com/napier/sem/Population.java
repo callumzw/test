@@ -22,7 +22,7 @@ public class Population
     public long cityPop;
 
     /**
-     * Rural Population
+     *  Rural Population
      */
     public long ruralPop;
 
