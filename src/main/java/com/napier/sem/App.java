@@ -16,7 +16,7 @@ public class App {
         {
             Database.connect(args[0]);
         }
-
+/*
        ArrayList<Country> countries = Country.topCountryCont(5,"Africa");
        Country.displayCountry(countries);
 
@@ -27,9 +27,15 @@ public class App {
 
        ArrayList<City> cities = City.topCityDistrict(5,"Zuid-Holland");
        City.displayCity(cities);
+       */
+
 
         System.out.println("Populations in Continents");
         ArrayList<Population> populations = Population.popContinent();
+        Population.displayPopulation(populations);
+        populations = Population.popRegion();
+        Population.displayPopulation(populations);
+        populations = Population.popCountry();
         Population.displayPopulation(populations);
 
         // Disconnect from database
