@@ -37,7 +37,7 @@ public class Population
             String countrySelect =
                     "SELECT Continent, SUM(DISTINCT country.Population), SUM(city.Population), SUM(DISTINCT country.Population)-SUM(city.Population) "
                             + "FROM country JOIN city ON city.CountryCode=country.Code "
-                            + "GROUP BY Continent ORDER BY SUM(country.Population) ";
+                            + "GROUP BY Continent ORDER BY SUM(country.Population) DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(countrySelect);
             // Return new employee if valid.
@@ -72,7 +72,7 @@ public class Population
             String countrySelect =
                     "SELECT Region, SUM(DISTINCT country.Population), SUM(city.Population), SUM(DISTINCT country.Population)-SUM(city.Population) "
                             + "FROM country JOIN city ON city.CountryCode=country.Code "
-                            + "GROUP BY Region ORDER BY SUM(country.Population)";
+                            + "GROUP BY Region ORDER BY SUM(country.Population) DESC";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(countrySelect);
             // Return new employee if valid.
@@ -107,7 +107,7 @@ public class Population
             String countrySelect =
                     "SELECT country.Name, SUM(DISTINCT country.Population), SUM(city.Population), SUM(DISTINCT country.Population)-SUM(city.Population) "
                             + "FROM country JOIN city ON city.CountryCode=country.Code "
-                            + "GROUP BY country.Name ORDER BY SUM(country.Population) ";
+                            + "GROUP BY country.Name ORDER BY SUM(country.Population) DESC ";
             // Execute SQL statement
             ResultSet rset = stmt.executeQuery(countrySelect);
             // Return new employee if valid.
@@ -116,7 +116,7 @@ public class Population
             while (rset.next())
             {
                 Population population = new Population();
-                population.name = rset.getString("Continent");
+                population.name = rset.getString("country.Name");
                 population.totalPop = rset.getLong("SUM(DISTINCT country.Population)");
                 population.cityPop = rset.getLong("SUM(city.Population)");
                 population.ruralPop = rset.getLong("SUM(DISTINCT country.Population)-SUM(city.Population)");
