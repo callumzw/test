@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 // This is a Test Class to test the methods in the Country Class
-public class UnitTest
+public class AppTest
 {
     static Country country;
 
