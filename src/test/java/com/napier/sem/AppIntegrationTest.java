@@ -17,7 +17,7 @@ public class AppIntegrationTest
     {
         Database.connect("localhost:33060");
     }
-
+/*
     @Test
     void testGetEmployee()
     {
@@ -26,4 +26,6 @@ public class AppIntegrationTest
         assertEquals(countries.get(0).name, "China");
         assertEquals(countries.get(0).continent, "Asia");
     }
+
+ */
 }

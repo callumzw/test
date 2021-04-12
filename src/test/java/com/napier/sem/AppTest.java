@@ -45,7 +45,7 @@ public class AppTest
         country.name = "Japan";
         country.continent = "Asia";
         country.region = "East Asia";
-        country.population = 100000;
+        country.population = "100000";
         country.capital = "Tokyo";
         countries.add(country);
         Country.displayCountry(countries);
